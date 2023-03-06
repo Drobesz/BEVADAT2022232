@@ -1,4 +1,4 @@
-def subset(lst, i1, i2): return lst[i1:i2+i1]
+def subset(lst, i1, i2): return lst[i1:i2]
 def every_nth(lst, step): return [item for item in lst if lst.index(item) % step == 0]
 def unique(lst): return len([item for item in lst if lst.count(item) == 1]) == len(lst)
 def flatten(lst): return [item for sublist in lst for item in sublist]
@@ -12,7 +12,7 @@ def by_parity(lst): return {"even":[item for item in lst if item % 2 == 0],"odd"
 def mean_key_value(dict): return {key: sum(value)/len(value) for key, value in dict.items()}
 """
 lista = [1, 1, 1, 2, 3, 4, 5, 2, 3]
-print(subset([1, 2, 3], 0, 2))
+print(subset([1, 2, 3, 4, 5, 6, 7], 3, 6))
 print(every_nth([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2))
 print(unique([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
 print(flatten([[1,2],[3,4],[5,6]]))
