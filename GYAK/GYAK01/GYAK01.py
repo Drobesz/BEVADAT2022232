@@ -1,5 +1,5 @@
 def contains_odd(lst): return len([num for num in lst if num % 2]) != 0
-def is_odd(lst): return list(map(lambda x: (x % 2 == 0), lst))
+def is_odd(lst): return list(map(lambda x: (x % 2 == 1), lst))
 def element_wise_sum(lst1, lst2): return list(map(lambda x, y: (x + y), lst1, lst2))
 def dict_to_list(dict): return list(map(lambda x, y: ((x, y)), dict.keys(), dict.values()))
 """
