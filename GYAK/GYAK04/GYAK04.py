@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 def dict_to_dataframe(dict): return pd.DataFrame(dict)
 def get_column(df, area): 
     df_new = df.copy()
-    return df_new['area']
+    return df_new[area]
 def get_top_two(df):
     df_new = df.copy()
     return df_new.sort_values(by='area', ascending=False)[0:2]
@@ -24,7 +24,7 @@ def plot_population(df):
 def plot_area(df):
     df_new = df.copy()
     fig, ax = plt.subplots()
-    ax.pie(df_new['area'], autopct='%1.1f%%', startangle=90)
+    ax.pie(df_new['area'], autopct='%1.1f%%', startangle=90, labels=df_new['country'])
     ax.set_title('Area of Countries')
     return fig
 
@@ -36,7 +36,7 @@ stats = {"country": ["Brazil", "Russia", "India", "China", "South Africa"],
 testdata = dict_to_dataframe(stats)
 
 '''
-print(get_column(testdata, "area"))
+print(get_column(testdata, 'area'))
 print(get_top_two(testdata))
 print(population_density(testdata))
 valami = plot_area(testdata)
