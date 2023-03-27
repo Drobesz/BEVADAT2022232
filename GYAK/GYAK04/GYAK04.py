@@ -24,7 +24,7 @@ def plot_population(df):
 def plot_area(df):
     df_new = df.copy()
     fig, ax = plt.subplots()
-    ax.pie(df_new['area'], autopct='%1.1f%%', startangle=90, labels=df_new['country'])
+    ax.pie(df_new['area'], labels=df_new['country'])
     ax.set_title('Area of Countries')
     return fig
 

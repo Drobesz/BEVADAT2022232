@@ -36,6 +36,30 @@ def female_top_score(df):
     return (int(new_df.loc[[new_df['allscore'].idxmax()]]['math score']), 
             int(new_df.loc[[new_df['allscore'].idxmax()]]['reading score']), 
             int(new_df.loc[[new_df['allscore'].idxmax()]]['writing score']))
+def math_bar_plot(df):
+    new_df = df.copy()
+    new_df = new_df.groupby('gender')['math score'].mean()
+    fig, ax = plt.subplots()
+    ax.bar(list(new_df.index), list(new_df.values))
+    ax.set_xlabel('Gender')
+    ax.set_ylabel('Math Score')
+    ax.set_title('Average Math Score by Gender')
+    return fig
+def writing_hist(df):
+    new_df = df.copy()
+    fig, ax = plt.subplots()
+    ax.hist(new_df['writing score'])
+    ax.set_xlabel('Writing Score')
+    ax.set_ylabel('Number of Students')
+    ax.set_title('Distribution of Writing Scores')
+    return fig
+def ethnicity_pie_chart(df):
+    new_df = df.copy()
+    new_df = new_df.groupby('race/ethnicity')['race/ethnicity'].count()
+    fig, ax = plt.subplots()
+    ax.pie(list(new_df.values), labels=list(new_df.index), autopct='%1.1f%%')
+    ax.set_title('Proportion of Students by Race/Ethnicity')
+    return fig
 
 '''
 testdata = csv_to_df('HAZI\HAZI04\StudentsPerformance.csv')
@@ -45,5 +69,6 @@ print(did_pre_course(testdata))
 print(average_scores(testdata))
 print(add_grade(testdata))
 print(female_top_score(testdata))
-print(add_age(testdata))
+valami = ethnicity_pie_chart(testdata)
+plt.show()
 '''
