@@ -15,14 +15,6 @@ class KNNClassifier:
     def k_neighbors(self):
         return self.k
     
-    
-    @staticmethod
-    def load_csv(csv_path: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
-        df = pd.read_csv(csv_path)
-        df = df.sample(frac=1, random_state=42)
-        x, y = df.iloc[:,:-1], df.iloc[:, -1]
-        return x, y   
-    
     def train_test_split(self, features: pd.DataFrame, labels: pd.Series) -> None:
         test_size = int(len(features) * self.test_split_ratio)
         train_size = len(features) - test_size
@@ -32,7 +24,6 @@ class KNNClassifier:
     
     def euclidean(self, element_of_x: pd.DataFrame) -> pd.DataFrame:
         return (self.x_train - element_of_x).pow(2).sum(axis=1).pow(1./2)
-    
     
     def predict(self, x_test: pd.DataFrame) -> None:
         labels_pred = []
@@ -49,7 +40,17 @@ class KNNClassifier:
         return true_positive / len(self.y_test) * 100
     
     def confusion_matrix(self):
-        return confusion_matrix(self.y_test,self.y_preds)   
+        return confusion_matrix(self.y_test,self.y_preds)
+    
+    def plot_confusion_matrix(confusion_matrix) -> None:
+        sns.heatmap(confusion_matrix, annot = True)
+    
+    @staticmethod
+    def load_csv(csv_path: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
+        df = pd.read_csv(csv_path)
+        df = df.sample(frac=1, random_state=42)
+        x, y = df.iloc[:,:-1], df.iloc[:, -1]
+        return x, y
     
     def best_k(self) -> Tuple[int, float]:
         best_accuracy = 0

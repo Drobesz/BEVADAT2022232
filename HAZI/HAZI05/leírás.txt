@@ -1,0 +1,16 @@
+Ez az osztály egy K-Nearest Neighbors osztályozót valósít meg.
+
+Ennek lényege, hogy bevisszük oszlopokban értékeket (ezek adott vizsgálandó dolog bizonyos - általában valamilyen formában összefüggő - tulajdonságai),
+valamint melléjük írjuk, hogy melyik osztályhoz tartozik (ezért kerülnek beolvasáskor külön datasetbe/df-be a legutolsó oszlop értékei).
+
+Ezután megkeverjük ezt 2 bemeneti datasetet/df-et, és szétválasztjuk ketté, egyik része lesz a teszt, a másik pedig a minta adathalmaz.
+
+A minta alapján pedig megnézzük "milyen távol/közel" van a teszt elem (euclidean fv) a minta többi elemétől, és a legközelebbi k darab (ezt konstruktorban meg lehet adeni)
+mint osztálya alapján a tesztelendő elemeknek is ad egy osztályt (k általában páratlan, mert úgy könnyebb döntést hozni).
+
+Mikor megtörtént a predikció a teszt elemekre, megnézzük, hogy mennyire volt helyes a becslés az adott beállítások mellett. Nyilván ha a test-split ratiot és/vagy
+a k-t állítgatjuk, akkor mást kapunk, ezzel lehet játszani.
+
+Ha magas az accuracynk, akkor az azt jelzi, hogy a mintánk jó, és alkalmas prediktíven meghatározni a ilyen "távolságméréssel" az adott vizsgálandó elem osztályát.
+
+Ennél az algoritmusnál akkor jó a nagy elemszám a mintához, hogyha az adott oszlopértékek alapján jól elkülönülő osztályaink vannak.
