@@ -14,3 +14,6 @@ a k-t állítgatjuk, akkor mást kapunk, ezzel lehet játszani.
 Ha magas az accuracynk, akkor az azt jelzi, hogy a mintánk jó, és alkalmas prediktíven meghatározni a ilyen "távolságméréssel" az adott vizsgálandó elem osztályát.
 
 Ennél az algoritmusnál akkor jó a nagy elemszám a mintához, hogyha az adott oszlopértékek alapján jól elkülönülő osztályaink vannak.
+
+Légyszi legközlebb valami normális leírást rakjatok ki vagy tesztet, amit a kódon futtattok, mert egyáltalán nem értem, hogy pl. az accuracy függvény, ami
+mindkét esetben ugyanazt kell csinálja miért OK az egyiknél és ERROR a  másiknál.

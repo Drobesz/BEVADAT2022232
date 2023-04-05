@@ -19,8 +19,8 @@ class KNNClassifier:
         test_size = int(len(features) * self.test_split_ratio)
         train_size = len(features) - test_size
         assert len(features) == test_size + train_size, "Size mismatch!"
-        self.x_train, self.y_train = features.iloc[:train_size, :], labels.iloc[:train_size]
-        self.x_test, self.y_test = features.iloc[train_size:train_size+test_size, :], labels.iloc[train_size:train_size+test_size]
+        self.x_train, self.y_train = features.iloc[ : train_size, :], labels.iloc[ : train_size]
+        self.x_test, self.y_test = features.iloc[train_size : train_size+test_size, :], labels.iloc[train_size : train_size+test_size]
     
     def euclidean(self, element_of_x: pd.DataFrame) -> pd.DataFrame:
         return (self.x_train - element_of_x).pow(2).sum(axis=1).pow(1./2)
