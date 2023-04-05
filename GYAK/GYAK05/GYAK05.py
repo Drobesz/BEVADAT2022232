@@ -43,7 +43,7 @@ class KNNClassifier:
     def confusion_matrix(self) -> np.ndarray:
         return confusion_matrix(self.y_test, self.y_preds)
 
-    @classmethod
+    @staticmethod
     def load_csv(csv_path : str) -> Tuple[np.ndarray, np.ndarray]:
         np.random.seed(42)
         dataset = np.genfromtxt(csv_path, delimiter = ',')
