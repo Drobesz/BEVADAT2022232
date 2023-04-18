@@ -51,3 +51,35 @@ HAZI-
 ##                                                              ##
 ##################################################################
 """
+
+import numpy as np
+import pandas as pd
+from NJCleaner import NJCleaner
+from DecisionTreeClassifier  import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+first_60k_path = 'NJ_teszt.csv'
+nj = NJCleaner('2018_03.csv')
+nj.prep_df(first_60k_path)
+
+col_name = ['stop_sequence' , 'from_id' , 'to_id' , 'status' , 'line' , 'type' , 'day', 'part_of_the_day' , 'delay']
+data = pd.read_csv(first_60k_path, skiprows = 1, header = None, names = col_name)
+
+X = data.iloc[:, :-1].values
+Y = data.iloc[:, -1].values.reshape(-1, 1)
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = .2, random_state = 41)
+
+classifier = DecisionTreeClassifier(min_samples_split = 60, max_depth = 10)
+classifier.fit(X_train, Y_train)
+
+Y_pred = classifier.predict(X_test)
+print(accuracy_score(Y_test, Y_pred))
+
+'''
+Na, a legnehezebb az volt, hogy rájöjjek, h el kell cd-zni a terminálban a megfelelő mappába és amiatt nem érzékeli a fájl létezését ez.
+Csináltam egy csomó tesztet, mellékelve van excelben. Ebben a feladatban a az NJCleaner osztály szolgál arra, hogy az adatok meg legyenek tisztítva. A
+DecisionTreeCalssifier pedig magának a döntési fának a legenerálásáért felel. (Nem igazán tudom, hogy mit írjak még, ha bármi van, kérdezzetek, remélem
+ennyi elég.)
+'''
